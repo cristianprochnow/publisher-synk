@@ -9,7 +9,7 @@ And then, run `docker compose up -d` into project root to start project.
 
 ## Tests
 
-The easy way to run tests is just run `docker compose up -d` command to start project with variables. So, enter in `synk_auth` with `docker exec` and run `go test ./tests -v`.
+The easy way to run tests is just run `docker compose up -d` command to start project with variables. So, enter in `synk_publisher` with `docker exec` and run `go test ./tests -v`.
 
 ## Certificates
 
@@ -160,5 +160,36 @@ func PostToTelegram(content string) error {
 		"webhook_id": "123456789"
 	},
 	"raw": "{\"type\":0,\"content\":\"showwwwwwwwwwwwww\",\"mentions\":[],\"mention_roles\":[],\"attachments\":[],\"embeds\":[],\"timestamp\":\"2025-11-26T00:23:48.134000+00:00\",\"edited_timestamp\":null,\"flags\":0,\"components\":[],\"id\":\"123456789\",\"channel_id\":\"123456789\",\"author\":{\"id\":\"123456789\",\"username\":\"Captain Hook\",\"avatar\":null,\"discriminator\":\"0000\",\"public_flags\":0,\"flags\":0,\"bot\":true,\"global_name\":null,\"clan\":null,\"primary_guild\":null},\"pinned\":false,\"mention_everyone\":false,\"tts\":false,\"webhook_id\":\"123456789\"}\n"
+}
+```
+
+## Send message through Telegram
+
+> `GET` /telegram/publish
+
+### Request
+
+> `bot_token` and `chat_id` can be got following instructions above for Setup Integrations of Telegram.
+
+```json
+{
+	"bot_token": "123456789:123456789-123456789-123456789",
+	"chat_id": "123456789",
+	"message": "showwwwwwww"
+}
+```
+
+### Response
+
+```json
+{
+	"resource": {
+		"ok": true,
+		"error": ""
+	},
+	"post": {
+		"message_id": "4"
+	},
+	"raw": "{\"ok\":true,\"result\":{\"message_id\":4,\"from\":{\"id\":123456789,\"is_bot\":true,\"first_name\":\"Show\",\"username\":\"showbot\"},\"chat\":{\"id\":123456789,\"first_name\":\"Cristian\",\"last_name\":\"Prochnow\",\"type\":\"private\"},\"date\":1764178981,\"text\":\"showwwwwwww\"}}"
 }
 ```
