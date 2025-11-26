@@ -43,8 +43,7 @@ func SetJsonContentType(w http.ResponseWriter) {
 func Cors(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var allowedOriginsMap = map[string]struct{}{
-			strings.TrimSuffix(os.Getenv("WEB_ENDPOINT"), "/"):     {},
-			strings.TrimSuffix(os.Getenv("GATEWAY_ENDPOINT"), "/"): {},
+			strings.TrimSuffix(os.Getenv("QUEUER_ENDPOINT"), "/"): {},
 		}
 
 		w.Header().Set("Access-Control-Allow-Credentials", "true")
